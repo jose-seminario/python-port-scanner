@@ -1,7 +1,6 @@
 import socket
 
 def scanner(ip, port):
-    pass
     print(f"Escaneando el puerto {port}...")
 
 print("*" * 42)
