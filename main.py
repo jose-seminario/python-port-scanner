@@ -1,4 +1,7 @@
-def scanner(port):
+import socket
+
+def scanner(ip, port):
+    pass
     print(f"Escaneando el puerto {port}...")
 
 print("*" * 42)
@@ -6,6 +9,8 @@ print("         Python Port Scanner")
 print("*" * 42)
 
 puerto_valido = False
+
+ip = input("Ingrese la IP o dominio: ")
 
 while puerto_valido == False:
     try:
@@ -21,4 +26,4 @@ while puerto_valido == False:
     else:
         print("Ingrese un puerto entre 0 y 65535")
 
-scanner(puerto)
+scanner(ip, puerto)
