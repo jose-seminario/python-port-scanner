@@ -3,6 +3,18 @@ import socket
 def scanner(ip, port):
     print(f"Escaneando el puerto {port}...")
 
+    conexion = socket.socket()
+
+    try:
+        conexion.connect((ip, port))
+        print("Puerto abierto")
+
+    except:
+        print("Puerto cerrado")
+
+    finally:
+        conexion.close()
+
 print("*" * 42)
 print("         Python Port Scanner")
 print("*" * 42)
