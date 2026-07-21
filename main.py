@@ -1,40 +1,39 @@
 import socket
 
 def scanner(ip, port):
-    print(f"Escaneando el puerto {port}...")
+    print(f"Scanning port {port}...")
 
-    conexion = socket.socket()
+    connection = socket.socket()
 
     try:
-        conexion.connect((ip, port))
-        print("Puerto abierto")
+        connection.connect((ip, port))
+        print("Port is open")
 
     except:
-        print("Puerto cerrado")
+        print("Port is closed")
 
     finally:
-        conexion.close()
+        connection.close()
 
 print("*" * 42)
 print("         Python Port Scanner")
 print("*" * 42)
 
-puerto_valido = False
+valid_port = False
 
-ip = input("Ingrese la IP o dominio: ")
+ip = input("Enter IP address or domain: ")
 
-while puerto_valido == False:
+while valid_port == False:
     try:
-        puerto = input("Enter Port: ")
-        puerto = int(puerto)
+        port = int(input("Enter port: "))
 
     except:
-        print("Inserte un número válido")
+        print("Please enter a valid number.")
         continue
 
-    if puerto >= 0 and puerto <= 65535:
-        puerto_valido = True
+    if 0 <= port <= 65535:
+        valid_port = True
     else:
-        print("Ingrese un puerto entre 0 y 65535")
+        print("Please enter a port between 0 and 65535.")
 
-scanner(ip, puerto)
+scanner(ip, port)
