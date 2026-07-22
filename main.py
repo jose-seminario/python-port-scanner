@@ -25,6 +25,24 @@ def show_menu():
     print("1. Scan a specific port or a port range")
     print("2. Scan all ports")
 
+def get_user_option():
+    valid_option = False
+
+    while valid_option == False:
+        try:
+            user_option = int(input("Choose an option: "))
+
+        except:
+            print("Please enter a valid number.")
+            continue
+
+        if user_option == 1 or user_option == 2:
+            valid_option = True
+        else:
+            print("Please choose option 1 or 2.")
+
+    return user_option
+
 valid_port = False
 
 ip = input("Enter IP address or domain: ")
