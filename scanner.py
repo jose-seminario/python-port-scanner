@@ -26,4 +26,5 @@ def scan_port_range(ip, start_port, end_port):
         if scanner(ip, port):
             service = get_service(port)
             print(f"[OPEN] Port {port} - {service}")
-            
+
+    
