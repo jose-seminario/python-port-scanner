@@ -2,19 +2,23 @@ import socket
 
 
 def scanner(ip, port):
-    print(f"Scanning port {port}...")
-
     connection = socket.socket()
 
     try:
         connection.connect((ip, port))
-        print("Port is open")
+        return True
 
     except:
-        print("Port is closed")
+        return False
 
     finally:
         connection.close()
+
+
+def scan_port_range(ip, start_port, end_port):
+    for port in range(start_port, end_port + 1):
+        if scanner(ip, port):
+            print(f"[OPEN] Port {port}")
 
 
 def show_banner():
@@ -29,9 +33,7 @@ def show_menu():
 
 
 def get_user_option():
-    valid_option = False
-
-    while not valid_option:
+    while True:
         try:
             user_option = int(input("Choose an option: "))
 
@@ -40,35 +42,38 @@ def get_user_option():
             continue
 
         if user_option == 1 or user_option == 2:
-            valid_option = True
-        else:
-            print("Please choose option 1 or 2.")
+            return user_option
 
-    return user_option
+        print("Please choose option 1 or 2.")
 
 
 def get_ip():
-    ip = input("Enter IP address or domain: ")
-    return ip
+    return input("Enter IP address or domain: ")
 
 
-def get_port():
-    valid_port = False
-
-    while not valid_port:
+def get_port_range():
+    while True:
         try:
-            port = int(input("Enter port: "))
+            start_port = int(input("Enter start port: "))
+            end_port = int(input("Enter end port: "))
 
         except:
             print("Please enter a valid number.")
             continue
 
-        if 0 <= port <= 65535:
-            valid_port = True
-        else:
-            print("Please enter a port between 0 and 65535.")
+        if not (0 <= start_port <= 65535):
+            print("Start port must be between 0 and 65535.")
+            continue
 
-    return port
+        if not (0 <= end_port <= 65535):
+            print("End port must be between 0 and 65535.")
+            continue
+
+        if start_port > end_port:
+            print("Start port cannot be greater than end port.")
+            continue
+
+        return start_port, end_port
 
 
 show_banner()
@@ -76,7 +81,11 @@ show_menu()
 
 option = get_user_option()
 
-ip = get_ip()
-port = get_port()
+if option == 1:
+    ip = get_ip()
+    start_port, end_port = get_port_range()
+    scan_port_range(ip, start_port, end_port)
 
-scanner(ip, port)
+elif option == 2:
+    ip = get_ip()
+    scan_port_range(ip, 1, 65535)
