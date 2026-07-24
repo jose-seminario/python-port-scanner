@@ -22,9 +22,12 @@ def get_service(port):
         return "Unknown"
 
 def scan_port_range(ip, start_port, end_port):
+    open_ports = []
+
     for port in range(start_port, end_port + 1):
         if scanner(ip, port):
             service = get_service(port)
-            print(f"[OPEN] Port {port} - {service}")
+            open_ports.append((port, service))
+    return open_ports
 
     
