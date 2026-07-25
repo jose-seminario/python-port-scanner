@@ -12,3 +12,5 @@ def show_scan_results(open_ports):
     for port, service in open_ports:
         print(f"Port: {port} | Service: {service}")
 
+def show_scan_time(elapsed_time):
+    print(f"Scan completed in {elapsed_time:.2f} seconds")
