@@ -39,4 +39,5 @@ def scan_port_range(ip, start_port, end_port):
             service = get_service(port)
             open_ports.append((port, service))
 
+    print()
     return open_ports

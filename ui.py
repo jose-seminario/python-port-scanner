@@ -16,4 +16,4 @@ def show_scan_time(elapsed_time):
     print(f"Scan completed in {elapsed_time:.2f} seconds")
 
 def show_progress(progress):
-    print(f"Scanning... {progress:.2f}%")
+    print(f"Scanning... {progress:.2f}%", end="\r")
