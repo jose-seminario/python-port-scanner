@@ -14,3 +14,6 @@ def show_scan_results(open_ports):
 
 def show_scan_time(elapsed_time):
     print(f"Scan completed in {elapsed_time:.2f} seconds")
+
+def show_progress(progress):
+    print(f"Scanning... {progress:.2f}%")
