@@ -8,5 +8,7 @@ def show_menu():
     print("1. Scan a specific port or a port range")
     print("2. Scan all ports")
 
-def show_scan_results():
-    print
+def show_scan_results(open_ports):
+    for port, service in open_ports:
+        print(f"Port: {port} | Service: {service}")
+
